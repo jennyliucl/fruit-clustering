@@ -1,0 +1,2036 @@
+﻿<!DOCTYPE html>
+<html lang="zh" xml:lang="zh" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<meta content="SAS 9.4" name="generator"/>
+<title>SAS 輸出</title>
+<style>
+/*<![CDATA[*/
+.body.c > table, .body.c > pre, .body.c div > table,
+.body.c div > pre, .body.c > table, .body.c > pre,
+.body.j > table, .body.j > pre, .body.j div > table,
+.body.j div > pre, .body.j > table, .body.j > pre,
+.body.c p.note, .body.c p.warning, .body.c p.error, .body.c p.fatal,
+.body.j p.note, .body.j p.warning, .body.j p.error, .body.j p.fatal,
+.body.c > table.layoutcontainer, .body.j > table.layoutcontainer { margin-left: auto; margin-right: auto }
+.layoutregion.l table, .layoutregion.l pre, .layoutregion.l p.note,
+.layoutregion.l p.warning, .layoutregion.l p.error, .layoutregion.l p.fatal { margin-left: 0 }
+.layoutregion.c table, .layoutregion.c pre, .layoutregion.c p.note,
+.layoutregion.c p.warning, .layoutregion.c p.error, .layoutregion.c p.fatal { margin-left: auto; margin-right: auto }
+.layoutregion.r table, .layoutregion.r pre, .layoutregion.r p.note,
+.layoutregion.r table, .layoutregion.r pre, .layoutregion.r p.note,
+.layoutregion.r p.warning, .layoutregion.r p.error, .layoutregion.r p.fatal { margin-right: 0 }
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block }
+html{ font-size: 100% }
+.body { margin: 1em; font-size: 13px; line-height: 1.231 }
+sup { position: relative; vertical-align: baseline; bottom: 0.25em; font-size: 0.8em }
+sub { position: relative; vertical-align: baseline; top: 0.25em; font-size: 0.8em }
+ul, ol { margin: 1em 0; padding: 0 0 0 40px }
+dd { margin: 0 0 0 40px }
+nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0 }
+img { border: 0; vertical-align: middle }
+svg:not(:root) { overflow: hidden }
+figure { margin: 0 }
+table { border-collapse: collapse; border-spacing: 0 }
+.layoutcontainer { border-collapse: separate; border-spacing: 0 }
+p { margin-top: 0; text-align: left }
+h1.heading1 { text-align: left }
+h2.heading2 { text-align: left }
+h3.heading3 { text-align: left }
+h4.heading4 { text-align: left }
+h5.heading5 { text-align: left }
+h6.heading6 { text-align: left }
+span { text-align: left }
+table { margin-bottom: 1em }
+td, th { text-align: left; padding: 3px 6px; vertical-align: top }
+td[class$="fixed"], th[class$="fixed"] { white-space: pre }
+section, article { padding-top: 1px; padding-bottom: 8px }
+hr.pagebreak { height: 0px; border: 0; border-bottom: 1px solid #c0c0c0; margin: 1em 0 }
+.stacked-value { text-align: left; display: block }
+.stacked-cell > .stacked-value, td.data > td.data, th.data > td.data, th.data > th.data, td.data > th.data, th.header > th.header { border: 0 }
+.stacked-cell > div.data { border-width: 0 }
+.systitleandfootercontainer { white-space: nowrap; margin-bottom: 1em }
+.systitleandfootercontainer > p { margin: 0 }
+.systitleandfootercontainer > p > span { display: inline-block; width: 100%; white-space: normal }
+.batch { display: table }
+.toc { display: none }
+.proc_note_group, .proc_title_group { margin-bottom: 1em }
+p.proctitle { margin: 0 }
+p.note, p.warning, p.error, p.fatal { display: table }
+.notebanner, .warnbanner, .errorbanner, .fatalbanner,
+.notecontent, .warncontent, .errorcontent, .fatalcontent { display: table-cell; padding: 0.5em }
+.notebanner, .warnbanner, .errorbanner, .fatalbanner { padding-right: 0 }
+.body > div > ol li { text-align: left }
+.beforecaption > h4 { margin-top: 0; margin-bottom: 0 }
+.c { text-align: center }
+.r { text-align: right }
+.l { text-align: left }
+.j { text-align: justify }
+.d { text-align: right }
+.b { vertical-align: bottom }
+.m { vertical-align: middle }
+.t { vertical-align: top }
+.accessiblecaption {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+a:active { color: #800080 }
+.aftercaption {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+    padding-top: 4pt;
+}
+.batch > colgroup {
+    border-left: 1px solid #c1c1c1;
+    border-right: 1px solid #c1c1c1;
+}
+.batch > tbody, .batch > thead, .batch > tfoot {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 1px solid #c1c1c1;
+}
+.batch { border: hidden; }
+.batch {
+    background-color: #fafbfe;
+    border: 1px solid #c1c1c1;
+    border-collapse: separate;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: MingLiu, Courier, monospace, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    padding: 7px;
+    }
+.beforecaption {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.body {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.bodydate {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #000000;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    text-align: right;
+    vertical-align: top;
+    width: 100%;
+}
+.bycontentfolder {
+    color: #000000;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.byline {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.bylinecontainer > col, .bylinecontainer > colgroup > col, .bylinecontainer > colgroup, .bylinecontainer > tr, .bylinecontainer > * > tr, .bylinecontainer > thead, .bylinecontainer > tbody, .bylinecontainer > tfoot { border: none; }
+.bylinecontainer {
+    background-color: #fafbfe;
+    border: none;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.caption {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.cell, .container {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.contentfolder, .contentitem {
+    color: #000000;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.contentproclabel, .contentprocname {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.contents {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: decimal;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.contentsdate {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.contenttitle {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: bold;
+}
+.continued {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+    width: 100%;
+}
+.data, .dataemphasis {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.dataemphasisfixed {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: MingLiu, Courier, monospace, sans-serif;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.dataempty {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.datafixed {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: MingLiu, Courier, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.datastrong {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.datastrongfixed {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: MingLiu, Courier, monospace, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.date {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.document {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.errorbanner {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.errorcontent {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.errorcontentfixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: MingLiu, Courier, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.extendedpage {
+    background-color: #fafbfe;
+    border-style: solid;
+    border-width: 1pt;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+    text-align: center;
+}
+.fatalbanner {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.fatalcontent {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.fatalcontentfixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: MingLiu, Courier, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.folderaction {
+    color: #000000;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.footer {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.footeremphasis {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.footeremphasisfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: MingLiu, Courier, monospace, sans-serif;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.footerempty {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.footerfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: MingLiu, Courier, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.footerstrong {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.footerstrongfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: MingLiu, Courier, monospace, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.frame {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.graph > colgroup {
+    border-left: 1px solid #c1c1c1;
+    border-right: 1px solid #c1c1c1;
+}
+.graph > tbody, .graph > thead, .graph > tfoot {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 1px solid #c1c1c1;
+}
+.graph { border: hidden; }
+.graph {
+    background-color: #fafbfe;
+    border: 1px solid #c1c1c1;
+    border-collapse: separate;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    }
+.header {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.headeremphasis {
+    background-color: #d8dbd3;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.headeremphasisfixed {
+    background-color: #d8dbd3;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: MingLiu, Courier, monospace, sans-serif;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.headerempty {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.headerfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: MingLiu, Courier, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.headersandfooters {
+    background-color: #edf2f9;
+    color: #000000;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.headerstrong {
+    background-color: #d8dbd3;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.headerstrongfixed {
+    background-color: #d8dbd3;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: MingLiu, Courier, monospace, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.heading1, .heading2, .heading3, .heading4, .heading5, .heading6 { font-family: HeiT, Helvetica, sans-serif }
+.index {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.indexaction, .indexitem {
+    color: #000000;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.indexprocname {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.indextitle {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: bold;
+}
+.layoutcontainer, .layoutregion {
+    border-width: 0;
+    border-spacing: 30px;
+}
+.linecontent {
+    background-color: #fafbfe;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+a:link { color: #0000ff }
+.list {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: disc;
+}
+.list10 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.list2 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: circle;
+}
+.list3, .list4, .list5, .list6, .list7, .list8, .list9 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.listitem {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: disc;
+}
+.listitem10 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.listitem2 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: circle;
+}
+.listitem3, .listitem4, .listitem5, .listitem6, .listitem7, .listitem8, .listitem9 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.note {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.notebanner {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.notecontent {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.notecontentfixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: MingLiu, Courier, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.output > colgroup {
+    border-left: 1px solid #c1c1c1;
+    border-right: 1px solid #c1c1c1;
+}
+.output > tbody, .output > thead, .output > tfoot {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 1px solid #c1c1c1;
+}
+.output { border: hidden; }
+.output {
+    background-color: #fafbfe;
+    border: 1px solid #c1c1c1;
+    border-collapse: separate;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    }
+.pageno {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+    text-align: right;
+    vertical-align: top;
+}
+.pages {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: decimal;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.pagesdate {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.pagesitem {
+    color: #000000;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.pagesproclabel, .pagesprocname {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.pagestitle {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: bold;
+}
+.paragraph {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.parskip > col, .parskip > colgroup > col, .parskip > colgroup, .parskip > tr, .parskip > * > tr, .parskip > thead, .parskip > tbody, .parskip > tfoot { border: none; }
+.parskip {
+    border: none;
+    border-spacing: 0;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+    }
+.prepage {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+}
+.proctitle {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.proctitlefixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: MingLiu, Courier, monospace, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.rowfooter {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.rowfooteremphasis {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.rowfooteremphasisfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: MingLiu, Courier, monospace, sans-serif;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.rowfooterempty {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.rowfooterfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: MingLiu, Courier, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.rowfooterstrong {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.rowfooterstrongfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: MingLiu, Courier, monospace, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.rowheader {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.rowheaderemphasis {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.rowheaderemphasisfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: MingLiu, Courier, monospace, sans-serif;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.rowheaderempty {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.rowheaderfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: MingLiu, Courier, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.rowheaderstrong {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.rowheaderstrongfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: MingLiu, Courier, monospace, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.systemfooter, .systemfooter10, .systemfooter2, .systemfooter3, .systemfooter4, .systemfooter5, .systemfooter6, .systemfooter7, .systemfooter8, .systemfooter9 {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.systemtitle, .systemtitle10, .systemtitle2, .systemtitle3, .systemtitle4, .systemtitle5, .systemtitle6, .systemtitle7, .systemtitle8, .systemtitle9 {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: small;
+    font-style: normal;
+    font-weight: bold;
+}
+.systitleandfootercontainer > col, .systitleandfootercontainer > colgroup > col, .systitleandfootercontainer > colgroup, .systitleandfootercontainer > tr, .systitleandfootercontainer > * > tr, .systitleandfootercontainer > thead, .systitleandfootercontainer > tbody, .systitleandfootercontainer > tfoot { border: none; }
+.systitleandfootercontainer {
+    background-color: #fafbfe;
+    border: none;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.table > col, .table > colgroup > col {
+    border-left: 1px solid #c1c1c1;
+    border-right: 0 solid #c1c1c1;
+}
+.table > tr, .table > * > tr {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 0 solid #c1c1c1;
+}
+.table { border: hidden; }
+.table {
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 1px 0 0 1px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    }
+.titleandnotecontainer > col, .titleandnotecontainer > colgroup > col, .titleandnotecontainer > colgroup, .titleandnotecontainer > tr, .titleandnotecontainer > * > tr, .titleandnotecontainer > thead, .titleandnotecontainer > tbody, .titleandnotecontainer > tfoot { border: none; }
+.titleandnotecontainer {
+    background-color: #fafbfe;
+    border: none;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.titlesandfooters {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.usertext {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+a:visited { color: #800080 }
+.warnbanner {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.warncontent {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: HeiT, Helvetica, Helv, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.warncontentfixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: MingLiu, Courier, sans-serif;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+/*]]>*/
+</style>
+</head>
+<body class="c body">
+<div style="padding-bottom: 8px; padding-top: 1px">
+<div id="IDX" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">集群分析結果</span> </p>
+</div>
+<div class="proc_title_group">
+<p class="c proctitle">FASTCLUS 程序</p>
+<p class="c proctitle">取代=FULL  半徑=0  Maxclusters=5 Maxiter=1</p>
+</div>
+<div style="padding-bottom: 8px; padding-top: 1px">
+<table class="table" style="border-spacing: 0" aria-label="初始種子">
+<caption aria-label="初始種子"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="28" scope="colgroup">初始種子</th>
+</tr>
+<tr>
+<th class="b header" scope="col">群集</th>
+<th class="r b header" scope="col">果糖</th>
+<th class="r b header" scope="col">水分</th>
+<th class="r b header" scope="col">熱量</th>
+<th class="r b header" scope="col">粗脂肪</th>
+<th class="r b header" scope="col">粗蛋白</th>
+<th class="r b header" scope="col">糖質總量</th>
+<th class="r b header" scope="col">維生素A總量(IU)</th>
+<th class="r b header" scope="col">維生素B1</th>
+<th class="r b header" scope="col">維生素B2</th>
+<th class="r b header" scope="col">維生素B6</th>
+<th class="r b header" scope="col">維生素C</th>
+<th class="r b header" scope="col">維生素E總量</th>
+<th class="r b header" scope="col">維生素K1</th>
+<th class="r b header" scope="col">總碳水化合物</th>
+<th class="r b header" scope="col">膳食纖維</th>
+<th class="r b header" scope="col">葉酸</th>
+<th class="r b header" scope="col">葡萄糖</th>
+<th class="r b header" scope="col">蔗糖</th>
+<th class="r b header" scope="col">鈉</th>
+<th class="r b header" scope="col">鈣</th>
+<th class="r b header" scope="col">鉀</th>
+<th class="r b header" scope="col">銅</th>
+<th class="r b header" scope="col">鋅</th>
+<th class="r b header" scope="col">錳</th>
+<th class="r b header" scope="col">鎂</th>
+<th class="r b header" scope="col">鐵</th>
+<th class="r b header" scope="col">麥芽糖</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">1</th>
+<td class="r data">3.000000</td>
+<td class="r data">88.400000</td>
+<td class="r data">40.000000</td>
+<td class="r data">0.100000</td>
+<td class="r data">0.600000</td>
+<td class="r data">7.900000</td>
+<td class="r data">1440.000000</td>
+<td class="r data">0.060000</td>
+<td class="r data">0.020000</td>
+<td class="r data">0.130000</td>
+<td class="r data">16.300000</td>
+<td class="r data">0.110000</td>
+<td class="r data">0.000000</td>
+<td class="r data">10.500000</td>
+<td class="r data">0.600000</td>
+<td class="r data">19.400000</td>
+<td class="r data">3.000000</td>
+<td class="r data">1.900000</td>
+<td class="r data">9.000000</td>
+<td class="r data">5.000000</td>
+<td class="r data">323.000000</td>
+<td class="r data">0.000000</td>
+<td class="r data">0.500000</td>
+<td class="r data">0.000000</td>
+<td class="r data">14.000000</td>
+<td class="r data">0.700000</td>
+<td class="r data">0.000000</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">2</th>
+<td class="r data">0.000000</td>
+<td class="r data">74.200000</td>
+<td class="r data">90.000000</td>
+<td class="r data">0.100000</td>
+<td class="r data">1.600000</td>
+<td class="r data">0.000000</td>
+<td class="r data">0.000000</td>
+<td class="r data">0.060000</td>
+<td class="r data">0.050000</td>
+<td class="r data">0.520000</td>
+<td class="r data">17.300000</td>
+<td class="r data">0.340000</td>
+<td class="r data">0.000000</td>
+<td class="r data">23.400000</td>
+<td class="r data">1.500000</td>
+<td class="r data">0.000000</td>
+<td class="r data">0.000000</td>
+<td class="r data">0.000000</td>
+<td class="r data">0.000000</td>
+<td class="r data">3.000000</td>
+<td class="r data">463.000000</td>
+<td class="r data">0.000000</td>
+<td class="r data">0.300000</td>
+<td class="r data">0.000000</td>
+<td class="r data">27.000000</td>
+<td class="r data">0.600000</td>
+<td class="r data">0.000000</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">3</th>
+<td class="r data">0.000000</td>
+<td class="r data">88.700000</td>
+<td class="r data">40.000000</td>
+<td class="r data">0.200000</td>
+<td class="r data">0.800000</td>
+<td class="r data">0.000000</td>
+<td class="r data">3968.000000</td>
+<td class="r data">0.030000</td>
+<td class="r data">0.030000</td>
+<td class="r data">0.000000</td>
+<td class="r data">6.900000</td>
+<td class="r data">0.000000</td>
+<td class="r data">0.000000</td>
+<td class="r data">10.000000</td>
+<td class="r data">0.400000</td>
+<td class="r data">0.000000</td>
+<td class="r data">0.000000</td>
+<td class="r data">0.000000</td>
+<td class="r data">9.000000</td>
+<td class="r data">3.000000</td>
+<td class="r data">80.000000</td>
+<td class="r data">0.000000</td>
+<td class="r data">0.200000</td>
+<td class="r data">0.000000</td>
+<td class="r data">7.000000</td>
+<td class="r data">0.500000</td>
+<td class="r data">0.000000</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">4</th>
+<td class="r data">3.400000</td>
+<td class="r data">81.600000</td>
+<td class="r data">66.000000</td>
+<td class="r data">0.300000</td>
+<td class="r data">0.800000</td>
+<td class="r data">16.600000</td>
+<td class="r data">2239.000000</td>
+<td class="r data">0.060000</td>
+<td class="r data">0.070000</td>
+<td class="r data">0.350000</td>
+<td class="r data">5.000000</td>
+<td class="r data">1.070000</td>
+<td class="r data">0.000000</td>
+<td class="r data">16.900000</td>
+<td class="r data">1.300000</td>
+<td class="r data">0.000000</td>
+<td class="r data">0.200000</td>
+<td class="r data">13.000000</td>
+<td class="r data">0.000000</td>
+<td class="r data">12.000000</td>
+<td class="r data">165.000000</td>
+<td class="r data">0.000000</td>
+<td class="r data">0.300000</td>
+<td class="r data">0.000000</td>
+<td class="r data">16.000000</td>
+<td class="r data">0.300000</td>
+<td class="r data">0.000000</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">5</th>
+<td class="r data">3.700000</td>
+<td class="r data">86.800000</td>
+<td class="r data">47.000000</td>
+<td class="r data">0.200000</td>
+<td class="r data">0.400000</td>
+<td class="r data">10.500000</td>
+<td class="r data">657.000000</td>
+<td class="r data">0.030000</td>
+<td class="r data">0.040000</td>
+<td class="r data">0.350000</td>
+<td class="r data">5.900000</td>
+<td class="r data">1.060000</td>
+<td class="r data">0.000000</td>
+<td class="r data">12.200000</td>
+<td class="r data">0.800000</td>
+<td class="r data">0.000000</td>
+<td class="r data">0.300000</td>
+<td class="r data">6.500000</td>
+<td class="r data">0.000000</td>
+<td class="r data">9.000000</td>
+<td class="r data">95.000000</td>
+<td class="r data">0.000000</td>
+<td class="r data">0.400000</td>
+<td class="r data">0.000000</td>
+<td class="r data">9.000000</td>
+<td class="r data">0.000000</td>
+<td class="r data">0.000000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="IDX1" style="padding-bottom: 8px; padding-top: 1px">
+<table class="table" style="border-spacing: 0" aria-label="準則">
+<caption aria-label="準則"></caption>
+<colgroup><col/><col/></colgroup>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">根據最終種子的準則 =</th>
+<td class="r data">27.9903</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="IDX2" style="padding-bottom: 8px; padding-top: 1px">
+<table class="table" style="border-spacing: 0" aria-label="群集摘要">
+<caption aria-label="群集摘要"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="7" scope="colgroup">群集摘要</th>
+</tr>
+<tr>
+<th class="b header" scope="col">群集</th>
+<th class="r b header" scope="col">次數</th>
+<th class="r b header" scope="col">RMS 標準差</th>
+<th class="r b header" scope="col">從種子到<br/>觀測值<br/>的最大距離</th>
+<th class="c b header" scope="col">半徑<br/>已超過</th>
+<th class="r b header" scope="col">最接近的群集</th>
+<th class="r b header" scope="col">群集重心<br/>之間的距離</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">1</th>
+<td class="r data">11</td>
+<td class="r data">37.2312</td>
+<td class="r data">308.7</td>
+<td class="c data">&#160;</td>
+<td class="r data">4</td>
+<td class="r data">657.3</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">2</th>
+<td class="r data">161</td>
+<td class="r data">23.0301</td>
+<td class="r data">324.0</td>
+<td class="c data">&#160;</td>
+<td class="r data">5</td>
+<td class="r data">529.2</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">3</th>
+<td class="r data">2</td>
+<td class="r data">75.5292</td>
+<td class="r data">277.5</td>
+<td class="c data">&#160;</td>
+<td class="r data">4</td>
+<td class="r data">1704.7</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">4</th>
+<td class="r data">7</td>
+<td class="r data">40.5214</td>
+<td class="r data">260.2</td>
+<td class="c data">&#160;</td>
+<td class="r data">1</td>
+<td class="r data">657.3</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">5</th>
+<td class="r data">43</td>
+<td class="r data">37.8048</td>
+<td class="r data">401.7</td>
+<td class="c data">&#160;</td>
+<td class="r data">2</td>
+<td class="r data">529.2</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="IDX3" style="padding-bottom: 8px; padding-top: 1px">
+<table class="table" style="border-spacing: 0" aria-label="變數的統計值">
+<caption aria-label="變數的統計值"></caption>
+<colgroup><col/><col/><col/><col/><col/></colgroup><colgroup></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="5" scope="colgroup">變數的統計值</th>
+</tr>
+<tr>
+<th class="b header" scope="col">變數</th>
+<th class="r b header" scope="col">總 STD</th>
+<th class="r b header" scope="col">STD 內</th>
+<th class="r b header" scope="col">R 平方</th>
+<th class="r b header" scope="col">RSQ/(1-RSQ)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">果糖</th>
+<td class="r data">2.39807</td>
+<td class="r data">2.40240</td>
+<td class="r data">0.014385</td>
+<th class="r data">0.014595</th>
+</tr>
+<tr>
+<th class="rowheader" scope="row">水分</th>
+<td class="r data">5.49482</td>
+<td class="r data">5.52481</td>
+<td class="r data">0.007188</td>
+<th class="r data">0.007240</th>
+</tr>
+<tr>
+<th class="rowheader" scope="row">熱量</th>
+<td class="r data">20.11645</td>
+<td class="r data">20.21931</td>
+<td class="r data">0.007869</td>
+<th class="r data">0.007931</th>
+</tr>
+<tr>
+<th class="rowheader" scope="row">粗脂肪</th>
+<td class="r data">0.82388</td>
+<td class="r data">0.83050</td>
+<td class="r data">0.002105</td>
+<th class="r data">0.002110</th>
+</tr>
+<tr>
+<th class="rowheader" scope="row">粗蛋白</th>
+<td class="r data">0.38699</td>
+<td class="r data">0.39045</td>
+<td class="r data">0.000270</td>
+<th class="r data">0.000270</th>
+</tr>
+<tr>
+<th class="rowheader" scope="row">糖質總量</th>
+<td class="r data">5.62522</td>
+<td class="r data">5.62639</td>
+<td class="r data">0.017528</td>
+<th class="r data">0.017840</th>
+</tr>
+<tr>
+<th class="rowheader" scope="row">維生素A總量(IU)</th>
+<td class="r data">565.73323</td>
+<td class="r data">112.99273</td>
+<td class="r data">0.960824</td>
+<th class="r data">24.526022</th>
+</tr>
+<tr>
+<th class="rowheader" scope="row">維生素B1</th>
+<td class="r data">0.02484</td>
+<td class="r data">0.02483</td>
+<td class="r data">0.018366</td>
+<th class="r data">0.018709</th>
+</tr>
+<tr>
+<th class="rowheader" scope="row">維生素B2</th>
+<td class="r data">0.02996</td>
+<td class="r data">0.03017</td>
+<td class="r data">0.004249</td>
+<th class="r data">0.004267</th>
+</tr>
+<tr>
+<th class="rowheader" scope="row">維生素B6</th>
+<td class="r data">0.12103</td>
+<td class="r data">0.12166</td>
+<td class="r data">0.007771</td>
+<th class="r data">0.007832</th>
+</tr>
+<tr>
+<th class="rowheader" scope="row">維生素C</th>
+<td class="r data">30.79485</td>
+<td class="r data">31.03789</td>
+<td class="r data">0.002375</td>
+<th class="r data">0.002380</th>
+</tr>
+<tr>
+<th class="rowheader" scope="row">維生素E總量</th>
+<td class="r data">0.53888</td>
+<td class="r data">0.52550</td>
+<td class="r data">0.066098</td>
+<th class="r data">0.070776</th>
+</tr>
+<tr>
+<th class="rowheader" scope="row">維生素K1</th>
+<td class="r data">6.30470</td>
+<td class="r data">6.27070</td>
+<td class="r data">0.028500</td>
+<th class="r data">0.029336</th>
+</tr>
+<tr>
+<th class="rowheader" scope="row">總碳水化合物</th>
+<td class="r data">5.21354</td>
+<td class="r data">5.24270</td>
+<td class="r data">0.006922</td>
+<th class="r data">0.006971</th>
+</tr>
+<tr>
+<th class="rowheader" scope="row">膳食纖維</th>
+<td class="r data">1.16584</td>
+<td class="r data">1.16928</td>
+<td class="r data">0.012122</td>
+<th class="r data">0.012271</th>
+</tr>
+<tr>
+<th class="rowheader" scope="row">葉酸</th>
+<td class="r data">14.83508</td>
+<td class="r data">14.93678</td>
+<td class="r data">0.004426</td>
+<th class="r data">0.004446</th>
+</tr>
+<tr>
+<th class="rowheader" scope="row">葡萄糖</th>
+<td class="r data">2.17191</td>
+<td class="r data">2.16268</td>
+<td class="r data">0.026264</td>
+<th class="r data">0.026972</th>
+</tr>
+<tr>
+<th class="rowheader" scope="row">蔗糖</th>
+<td class="r data">2.83904</td>
+<td class="r data">2.81307</td>
+<td class="r data">0.035823</td>
+<th class="r data">0.037154</th>
+</tr>
+<tr>
+<th class="rowheader" scope="row">鈉</th>
+<td class="r data">4.29516</td>
+<td class="r data">3.98516</td>
+<td class="r data">0.154580</td>
+<th class="r data">0.182845</th>
+</tr>
+<tr>
+<th class="rowheader" scope="row">鈣</th>
+<td class="r data">8.32795</td>
+<td class="r data">8.36345</td>
+<td class="r data">0.009548</td>
+<th class="r data">0.009640</th>
+</tr>
+<tr>
+<th class="rowheader" scope="row">鉀</th>
+<td class="r data">82.72834</td>
+<td class="r data">82.39799</td>
+<td class="r data">0.025765</td>
+<th class="r data">0.026446</th>
+</tr>
+<tr>
+<th class="rowheader" scope="row">銅</th>
+<td class="r data">0.02536</td>
+<td class="r data">0.02521</td>
+<td class="r data">0.029512</td>
+<th class="r data">0.030410</th>
+</tr>
+<tr>
+<th class="rowheader" scope="row">鋅</th>
+<td class="r data">0.37317</td>
+<td class="r data">0.37471</td>
+<td class="r data">0.009807</td>
+<th class="r data">0.009904</th>
+</tr>
+<tr>
+<th class="rowheader" scope="row">錳</th>
+<td class="r data">0.04285</td>
+<td class="r data">0.04308</td>
+<td class="r data">0.007388</td>
+<th class="r data">0.007443</th>
+</tr>
+<tr>
+<th class="rowheader" scope="row">鎂</th>
+<td class="r data">10.01701</td>
+<td class="r data">10.09588</td>
+<td class="r data">0.002412</td>
+<th class="r data">0.002418</th>
+</tr>
+<tr>
+<th class="rowheader" scope="row">鐵</th>
+<td class="r data">0.19397</td>
+<td class="r data">0.19340</td>
+<td class="r data">0.023653</td>
+<th class="r data">0.024226</th>
+</tr>
+<tr>
+<th class="rowheader" scope="row">麥芽糖</th>
+<td class="r data">0.03385</td>
+<td class="r data">0.03404</td>
+<td class="r data">0.006836</td>
+<th class="r data">0.006883</th>
+</tr>
+<tr>
+<th class="rowheader" scope="row">OVER-ALL</th>
+<td class="r data">110.35452</td>
+<td class="r data">28.21206</td>
+<td class="r data">0.935816</td>
+<th class="r data">14.580140</th>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="IDX4" style="padding-bottom: 8px; padding-top: 1px">
+<table class="table" style="border-spacing: 0" aria-label="虛擬 F 統計值">
+<caption aria-label="虛擬 F 統計值"></caption>
+<colgroup><col/><col/></colgroup>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">虛擬 F 統計值 =</th>
+<td class="r data">798.26</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="IDX5" style="padding-bottom: 8px; padding-top: 1px">
+<table class="table" style="border-spacing: 0" aria-label="近似預期整體 R 平方">
+<caption aria-label="近似預期整體 R 平方"></caption>
+<colgroup><col/><col/></colgroup>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">近似預期整體 R 平方 =</th>
+<td class="r data">0.93711</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="IDX6" style="padding-bottom: 8px; padding-top: 1px">
+<table class="table" style="border-spacing: 0" aria-label="立方群集準則">
+<caption aria-label="立方群集準則"></caption>
+<colgroup><col/><col/></colgroup>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">立方群集準則 =</th>
+<td class="r data" style="white-space: nowrap">-0.233</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="proc_note_group">
+<p class="c proctitle">警告: 上方的兩個值不適用於相關變數。</p>
+</div>
+<div id="IDX7" style="padding-bottom: 8px; padding-top: 1px">
+<table class="table" style="border-spacing: 0" aria-label="群集平均值">
+<caption aria-label="群集平均值"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="28" scope="colgroup">群集平均值</th>
+</tr>
+<tr>
+<th class="b header" scope="col">群集</th>
+<th class="r b header" scope="col">果糖</th>
+<th class="r b header" scope="col">水分</th>
+<th class="r b header" scope="col">熱量</th>
+<th class="r b header" scope="col">粗脂肪</th>
+<th class="r b header" scope="col">粗蛋白</th>
+<th class="r b header" scope="col">糖質總量</th>
+<th class="r b header" scope="col">維生素A總量(IU)</th>
+<th class="r b header" scope="col">維生素B1</th>
+<th class="r b header" scope="col">維生素B2</th>
+<th class="r b header" scope="col">維生素B6</th>
+<th class="r b header" scope="col">維生素C</th>
+<th class="r b header" scope="col">維生素E總量</th>
+<th class="r b header" scope="col">維生素K1</th>
+<th class="r b header" scope="col">總碳水化合物</th>
+<th class="r b header" scope="col">膳食纖維</th>
+<th class="r b header" scope="col">葉酸</th>
+<th class="r b header" scope="col">葡萄糖</th>
+<th class="r b header" scope="col">蔗糖</th>
+<th class="r b header" scope="col">鈉</th>
+<th class="r b header" scope="col">鈣</th>
+<th class="r b header" scope="col">鉀</th>
+<th class="r b header" scope="col">銅</th>
+<th class="r b header" scope="col">鋅</th>
+<th class="r b header" scope="col">錳</th>
+<th class="r b header" scope="col">鎂</th>
+<th class="r b header" scope="col">鐵</th>
+<th class="r b header" scope="col">麥芽糖</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">1</th>
+<td class="r data">2.727273</td>
+<td class="r data">86.118182</td>
+<td class="r data">49.727273</td>
+<td class="r data">0.300000</td>
+<td class="r data">0.763636</td>
+<td class="r data">6.909091</td>
+<td class="r data">1335.909091</td>
+<td class="r data">0.042727</td>
+<td class="r data">0.040000</td>
+<td class="r data">0.115455</td>
+<td class="r data">18.436364</td>
+<td class="r data">0.703636</td>
+<td class="r data">0.000000</td>
+<td class="r data">12.409091</td>
+<td class="r data">1.718182</td>
+<td class="r data">6.863636</td>
+<td class="r data">1.545455</td>
+<td class="r data">2.645455</td>
+<td class="r data">3.818182</td>
+<td class="r data">7.454545</td>
+<td class="r data">179.909091</td>
+<td class="r data">0.017091</td>
+<td class="r data">0.463636</td>
+<td class="r data">0.000000</td>
+<td class="r data">12.000000</td>
+<td class="r data">0.336364</td>
+<td class="r data">0.000000</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">2</th>
+<td class="r data">2.308696</td>
+<td class="r data">85.713043</td>
+<td class="r data">51.136646</td>
+<td class="r data">0.314907</td>
+<td class="r data">0.756522</td>
+<td class="r data">5.817391</td>
+<td class="r data">45.677019</td>
+<td class="r data">0.035031</td>
+<td class="r data">0.034286</td>
+<td class="r data">0.106335</td>
+<td class="r data">24.016770</td>
+<td class="r data">0.351988</td>
+<td class="r data">0.357578</td>
+<td class="r data">12.775776</td>
+<td class="r data">1.565217</td>
+<td class="r data">6.249068</td>
+<td class="r data">2.006211</td>
+<td class="r data">1.491925</td>
+<td class="r data">2.335404</td>
+<td class="r data">10.211180</td>
+<td class="r data">191.670807</td>
+<td class="r data">0.010429</td>
+<td class="r data">0.320497</td>
+<td class="r data">0.008174</td>
+<td class="r data">11.708075</td>
+<td class="r data">0.240373</td>
+<td class="r data">0.006211</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">3</th>
+<td class="r data">0.000000</td>
+<td class="r data">90.250000</td>
+<td class="r data">34.000000</td>
+<td class="r data">0.150000</td>
+<td class="r data">0.750000</td>
+<td class="r data">0.000000</td>
+<td class="r data">3696.500000</td>
+<td class="r data">0.020000</td>
+<td class="r data">0.020000</td>
+<td class="r data">0.010000</td>
+<td class="r data">16.200000</td>
+<td class="r data">0.000000</td>
+<td class="r data">0.000000</td>
+<td class="r data">8.450000</td>
+<td class="r data">0.550000</td>
+<td class="r data">0.000000</td>
+<td class="r data">0.000000</td>
+<td class="r data">0.000000</td>
+<td class="r data">19.000000</td>
+<td class="r data">9.000000</td>
+<td class="r data">135.000000</td>
+<td class="r data">0.000000</td>
+<td class="r data">0.250000</td>
+<td class="r data">0.000000</td>
+<td class="r data">10.500000</td>
+<td class="r data">0.400000</td>
+<td class="r data">0.000000</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">4</th>
+<td class="r data">3.185714</td>
+<td class="r data">86.771429</td>
+<td class="r data">46.714286</td>
+<td class="r data">0.142857</td>
+<td class="r data">0.728571</td>
+<td class="r data">8.214286</td>
+<td class="r data">1993.000000</td>
+<td class="r data">0.040000</td>
+<td class="r data">0.035714</td>
+<td class="r data">0.132857</td>
+<td class="r data">23.500000</td>
+<td class="r data">0.705714</td>
+<td class="r data">0.000000</td>
+<td class="r data">11.971429</td>
+<td class="r data">1.114286</td>
+<td class="r data">7.742857</td>
+<td class="r data">1.000000</td>
+<td class="r data">4.014286</td>
+<td class="r data">5.857143</td>
+<td class="r data">13.142857</td>
+<td class="r data">194.428571</td>
+<td class="r data">0.002571</td>
+<td class="r data">0.242857</td>
+<td class="r data">0.000000</td>
+<td class="r data">11.714286</td>
+<td class="r data">0.271429</td>
+<td class="r data">0.000000</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">5</th>
+<td class="r data">2.202326</td>
+<td class="r data">85.839535</td>
+<td class="r data">50.697674</td>
+<td class="r data">0.260465</td>
+<td class="r data">0.746512</td>
+<td class="r data">5.560465</td>
+<td class="r data">573.883721</td>
+<td class="r data">0.041628</td>
+<td class="r data">0.036047</td>
+<td class="r data">0.101395</td>
+<td class="r data">22.137209</td>
+<td class="r data">0.621395</td>
+<td class="r data">3.002326</td>
+<td class="r data">12.779070</td>
+<td class="r data">1.546512</td>
+<td class="r data">4.420930</td>
+<td class="r data">1.339535</td>
+<td class="r data">2.018605</td>
+<td class="r data">2.767442</td>
+<td class="r data">10.372093</td>
+<td class="r data">160.279070</td>
+<td class="r data">0.000977</td>
+<td class="r data">0.295349</td>
+<td class="r data">0.000000</td>
+<td class="r data">10.511628</td>
+<td class="r data">0.288372</td>
+<td class="r data">0.000000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="IDX8" style="padding-bottom: 8px; padding-top: 1px">
+<table class="table" style="border-spacing: 0" aria-label="群集標準差">
+<caption aria-label="群集標準差"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="28" scope="colgroup">群集標準差</th>
+</tr>
+<tr>
+<th class="b header" scope="col">群集</th>
+<th class="r b header" scope="col">果糖</th>
+<th class="r b header" scope="col">水分</th>
+<th class="r b header" scope="col">熱量</th>
+<th class="r b header" scope="col">粗脂肪</th>
+<th class="r b header" scope="col">粗蛋白</th>
+<th class="r b header" scope="col">糖質總量</th>
+<th class="r b header" scope="col">維生素A總量(IU)</th>
+<th class="r b header" scope="col">維生素B1</th>
+<th class="r b header" scope="col">維生素B2</th>
+<th class="r b header" scope="col">維生素B6</th>
+<th class="r b header" scope="col">維生素C</th>
+<th class="r b header" scope="col">維生素E總量</th>
+<th class="r b header" scope="col">維生素K1</th>
+<th class="r b header" scope="col">總碳水化合物</th>
+<th class="r b header" scope="col">膳食纖維</th>
+<th class="r b header" scope="col">葉酸</th>
+<th class="r b header" scope="col">葡萄糖</th>
+<th class="r b header" scope="col">蔗糖</th>
+<th class="r b header" scope="col">鈉</th>
+<th class="r b header" scope="col">鈣</th>
+<th class="r b header" scope="col">鉀</th>
+<th class="r b header" scope="col">銅</th>
+<th class="r b header" scope="col">鋅</th>
+<th class="r b header" scope="col">錳</th>
+<th class="r b header" scope="col">鎂</th>
+<th class="r b header" scope="col">鐵</th>
+<th class="r b header" scope="col">麥芽糖</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">1</th>
+<td class="r data">1.8815371</td>
+<td class="r data">3.5796140</td>
+<td class="r data">13.6094887</td>
+<td class="r data">0.5347897</td>
+<td class="r data">0.5005452</td>
+<td class="r data">5.2464187</td>
+<td class="r data">179.7350575</td>
+<td class="r data">0.0219504</td>
+<td class="r data">0.0296648</td>
+<td class="r data">0.0873343</td>
+<td class="r data">20.6883674</td>
+<td class="r data">0.7715734</td>
+<td class="r data">0.0000000</td>
+<td class="r data">3.5722415</td>
+<td class="r data">1.6197643</td>
+<td class="r data">9.3331959</td>
+<td class="r data">1.4396969</td>
+<td class="r data">3.6084245</td>
+<td class="r data">4.4680685</td>
+<td class="r data">2.4642904</td>
+<td class="r data">65.4835163</td>
+<td class="r data">0.0380669</td>
+<td class="r data">0.7103136</td>
+<td class="r data">0.0000000</td>
+<td class="r data">5.5856960</td>
+<td class="r data">0.2656039</td>
+<td class="r data">0.0000000</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">2</th>
+<td class="r data">2.5148656</td>
+<td class="r data">5.9460400</td>
+<td class="r data">21.7914825</td>
+<td class="r data">0.9204762</td>
+<td class="r data">0.4087760</td>
+<td class="r data">5.8517045</td>
+<td class="r data">67.0001495</td>
+<td class="r data">0.0259356</td>
+<td class="r data">0.0323596</td>
+<td class="r data">0.1306938</td>
+<td class="r data">31.0730998</td>
+<td class="r data">0.4339683</td>
+<td class="r data">2.0396837</td>
+<td class="r data">5.6110135</td>
+<td class="r data">1.1429819</td>
+<td class="r data">16.2425795</td>
+<td class="r data">2.3315416</td>
+<td class="r data">2.7894214</td>
+<td class="r data">3.8028675</td>
+<td class="r data">8.7752564</td>
+<td class="r data">88.2195965</td>
+<td class="r data">0.0277281</td>
+<td class="r data">0.3886062</td>
+<td class="r data">0.0504031</td>
+<td class="r data">11.2047087</td>
+<td class="r data">0.1831594</td>
+<td class="r data">0.0398269</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">3</th>
+<td class="r data">0.0000000</td>
+<td class="r data">2.1920310</td>
+<td class="r data">8.4852814</td>
+<td class="r data">0.0707107</td>
+<td class="r data">0.0707107</td>
+<td class="r data">0.0000000</td>
+<td class="r data">383.9589822</td>
+<td class="r data">0.0141421</td>
+<td class="r data">0.0141421</td>
+<td class="r data">0.0141421</td>
+<td class="r data">13.1521861</td>
+<td class="r data">0.0000000</td>
+<td class="r data">0.0000000</td>
+<td class="r data">2.1920310</td>
+<td class="r data">0.2121320</td>
+<td class="r data">0.0000000</td>
+<td class="r data">0.0000000</td>
+<td class="r data">0.0000000</td>
+<td class="r data">14.1421356</td>
+<td class="r data">8.4852814</td>
+<td class="r data">77.7817459</td>
+<td class="r data">0.0000000</td>
+<td class="r data">0.0707107</td>
+<td class="r data">0.0000000</td>
+<td class="r data">4.9497475</td>
+<td class="r data">0.1414214</td>
+<td class="r data">0.0000000</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">4</th>
+<td class="r data">2.7315616</td>
+<td class="r data">2.7914836</td>
+<td class="r data">10.4994331</td>
+<td class="r data">0.1133893</td>
+<td class="r data">0.3352327</td>
+<td class="r data">6.2770557</td>
+<td class="r data">183.0783075</td>
+<td class="r data">0.0182574</td>
+<td class="r data">0.0207020</td>
+<td class="r data">0.1082765</td>
+<td class="r data">25.8213736</td>
+<td class="r data">0.5276633</td>
+<td class="r data">0.0000000</td>
+<td class="r data">2.8848537</td>
+<td class="r data">0.3023716</td>
+<td class="r data">13.2234460</td>
+<td class="r data">1.1445523</td>
+<td class="r data">4.4532492</td>
+<td class="r data">5.2734736</td>
+<td class="r data">11.8100038</td>
+<td class="r data">97.9334079</td>
+<td class="r data">0.0043916</td>
+<td class="r data">0.1272418</td>
+<td class="r data">0.0000000</td>
+<td class="r data">4.6084808</td>
+<td class="r data">0.1799471</td>
+<td class="r data">0.0000000</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">5</th>
+<td class="r data">2.0229032</td>
+<td class="r data">4.4936007</td>
+<td class="r data">16.1592298</td>
+<td class="r data">0.5464777</td>
+<td class="r data">0.2873101</td>
+<td class="r data">4.7365921</td>
+<td class="r data">182.9799897</td>
+<td class="r data">0.0220314</td>
+<td class="r data">0.0219458</td>
+<td class="r data">0.0927768</td>
+<td class="r data">33.8182257</td>
+<td class="r data">0.7354965</td>
+<td class="r data">13.7544839</td>
+<td class="r data">4.3635699</td>
+<td class="r data">1.2302437</td>
+<td class="r data">10.6109458</td>
+<td class="r data">1.7316576</td>
+<td class="r data">2.3848985</td>
+<td class="r data">3.7723127</td>
+<td class="r data">6.9488720</td>
+<td class="r data">56.7317521</td>
+<td class="r data">0.0061003</td>
+<td class="r data">0.1851042</td>
+<td class="r data">0.0000000</td>
+<td class="r data">6.4931176</td>
+<td class="r data">0.2129267</td>
+<td class="r data">0.0000000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemfooter">由 SAS 系統 (&apos;Local&apos;, X64_10PRO) 於 2023年06月17日 下午01:34:34 產生</span> </p>
+</div>
+</div>
+</body>
+</html>
